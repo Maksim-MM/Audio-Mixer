@@ -852,7 +852,7 @@ GameObject:
   - component: {fileID: 407552988}
   - component: {fileID: 407552987}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: First Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1419,7 +1419,7 @@ GameObject:
   - component: {fileID: 1028347047}
   - component: {fileID: 1028347048}
   m_Layer: 0
-  m_Name: Button sound 2
+  m_Name: Second button sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1586,9 +1586,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _masterMixer: {fileID: 24300002, guid: babd2bd3bdeab4ee1b4190e83b3c76fe, type: 2}
   _menu: {fileID: 1616553608}
-  _button1Sound: {fileID: 1996983348}
-  _button2Sound: {fileID: 1028347048}
-  _button3Sound: {fileID: 1696997498}
+  _firstButtonSound: {fileID: 1996983348}
+  _secondButtonSound: {fileID: 1028347048}
+  _thirdButtonSound: {fileID: 1696997498}
 --- !u!1 &1173633993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,7 +2312,7 @@ GameObject:
   - component: {fileID: 1478820325}
   - component: {fileID: 1478820324}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Second Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2635,7 +2635,7 @@ GameObject:
   - component: {fileID: 1591364164}
   - component: {fileID: 1591364163}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Third Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2908,9 +2908,9 @@ MonoBehaviour:
   _mainVolume: {fileID: 397334304}
   _buttonVolume: {fileID: 1554058323}
   _backgroundVolume: {fileID: 1422357989}
-  _button1: {fileID: 407552987}
-  _button2: {fileID: 1478820324}
-  _button3: {fileID: 1591364163}
+  _firstButton: {fileID: 407552987}
+  _secondButton: {fileID: 1478820324}
+  _thirdButton: {fileID: 1591364163}
 --- !u!1 &1696997496
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,7 +2922,7 @@ GameObject:
   - component: {fileID: 1696997497}
   - component: {fileID: 1696997498}
   m_Layer: 0
-  m_Name: Button sound 3
+  m_Name: Third button sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3405,7 +3405,7 @@ GameObject:
   - component: {fileID: 1996983347}
   - component: {fileID: 1996983348}
   m_Layer: 0
-  m_Name: Button sound 1
+  m_Name: First button sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

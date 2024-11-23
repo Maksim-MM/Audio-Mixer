@@ -3,80 +3,50 @@ using UnityEngine.Audio;
 
 public class SoundController : MonoBehaviour
 {
-    [SerializeField] private AudioMixerGroup _masterMixer;
-    [SerializeField] private Menu _menu;
-    [SerializeField] private AudioSource _button1Sound;
-    [SerializeField] private AudioSource _button2Sound;
-    [SerializeField] private AudioSource _button3Sound;
-
     private const string MasterVolume = "MasterVolume";
     private const string ButtonsVolume = "ButtonsVolume";
     private const string BackgroundVolume = "BackgroundVolume";
     
+    [SerializeField] private AudioMixerGroup _masterMixer;
+    [SerializeField] private Menu _menu;
+    [SerializeField] private AudioSource _firstButtonSound;
+    [SerializeField] private AudioSource _secondButtonSound;
+    [SerializeField] private AudioSource _thirdButtonSound;
+    
+    private VolumeController _volumeController;
+    private ButtonSoundController _firstButtonController;
+    private ButtonSoundController _secondButtonController;
+    private ButtonSoundController _thirdButtonController;
+    
     private float _maxValueLevel = 0f;
     private float _minValueLevel = -80f;
 
-    void Start()
+    private void Start()
     {
-        _menu.OnMuteToggleChanged += ToggleSound;
-        _menu.OnMainVolumeChanged += SetMasterVolume;
-        _menu.OnButtonsVolumeChanged += SetButtonsVolume;
-        _menu.OnBackgroundVolumeChanged += SetBackgroundVolume;
-        _menu.OnButton1Pressed += PlayButton1Sound;
-        _menu.OnButton2Pressed += PlayButton2Sound;
-        _menu.OnButton3Pressed += PlayButton3Sound;
+        _volumeController = new VolumeController(_masterMixer.audioMixer);
+        _firstButtonController = new ButtonSoundController(_firstButtonSound);
+        _secondButtonController = new ButtonSoundController(_secondButtonSound);
+        _thirdButtonController = new ButtonSoundController(_thirdButtonSound);
+        
+        _menu.MuteToggleChanged += ToggleSound;
+        _menu.MainVolumeChanged += volume => _volumeController.SetVolume(MasterVolume, volume);
+        _menu.ButtonsVolumeChanged += volume => _volumeController.SetVolume(ButtonsVolume, volume);
+        _menu.BackgroundVolumeChanged += volume => _volumeController.SetVolume(BackgroundVolume, volume);
+        _menu.FirstButtonPressed += _firstButtonController.PlaySound;
+        _menu.SecondButtonPressed += _secondButtonController.PlaySound;
+        _menu.ThirdButtonPressed += _thirdButtonController.PlaySound;
     }
     
     private void OnDestroy()
     {
-        _menu.OnMuteToggleChanged -= ToggleSound;
-        _menu.OnMainVolumeChanged -= SetMasterVolume;
-        _menu.OnButtonsVolumeChanged -= SetButtonsVolume;
-        _menu.OnBackgroundVolumeChanged -= SetBackgroundVolume;
-        _menu.OnButton1Pressed -= PlayButton1Sound;
-        _menu.OnButton2Pressed -= PlayButton2Sound;
-        _menu.OnButton3Pressed -= PlayButton3Sound;
+        _menu.MuteToggleChanged -= ToggleSound;
+        _menu.FirstButtonPressed -= _firstButtonController.PlaySound;
+        _menu.SecondButtonPressed -= _secondButtonController.PlaySound;
+        _menu.ThirdButtonPressed -= _thirdButtonController.PlaySound;
     }
     
     private void ToggleSound(bool isEnable)
     {
-        if (isEnable)
-        {
-            _masterMixer.audioMixer.SetFloat(MasterVolume, _maxValueLevel);
-        }
-        else
-        {
-            _masterMixer.audioMixer.SetFloat(MasterVolume, _minValueLevel);
-        }
-    }
-
-    private void SetMasterVolume(float volume)
-    {
-        _masterMixer.audioMixer.SetFloat(MasterVolume,Mathf.Log10(volume) * 20);
-    }
-
-    private void SetButtonsVolume(float volume)
-    {
-        _masterMixer.audioMixer.SetFloat(ButtonsVolume,Mathf.Log10(volume) * 20);
-    }
-    
-    private void SetBackgroundVolume(float volume)
-    {
-        _masterMixer.audioMixer.SetFloat(BackgroundVolume,Mathf.Log10(volume) * 20);
-    }
-
-    private void PlayButton1Sound()
-    {
-        _button1Sound.Play();
-    }
-    
-    private void PlayButton2Sound()
-    {
-        _button2Sound.Play();
-    }
-    
-    private void PlayButton3Sound()
-    {
-        _button3Sound.Play();
+        _volumeController.ToggleSound(MasterVolume, isEnable, _maxValueLevel, _minValueLevel);
     }
 }
