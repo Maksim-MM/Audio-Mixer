@@ -11,8 +11,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ButtonSoundController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/VolumeController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/MenuSlider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AudioVolume.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ButtonSound.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="2p749KDx5YSxfcE86aKI8kH3Tlx" />
   <component name="ProjectViewState">
@@ -85,7 +86,7 @@
       <updated>1732103630934</updated>
       <workItem from="1732103633420" duration="2289000" />
       <workItem from="1732302903858" duration="4474000" />
-      <workItem from="1732354638295" duration="10055000" />
+      <workItem from="1732354638295" duration="12546000" />
     </task>
     <servers />
   </component>
